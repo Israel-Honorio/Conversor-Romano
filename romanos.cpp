@@ -21,18 +21,35 @@ int romanos_para_decimal(char const * num_romano)
     return -1;  // String vazia
   }
 
-  int soma = 0;
+  int resultado = 0;
+  int tamanho = strlen(num_romano);
   
   // Verifica se todos os caracteres são algarismos romanos válidos
-  for (int i = 0; num_romano[i] != '\0'; i++) {
-    int valor = valor_algarismo(num_romano[i]);
-    if (valor == -1) {
+  for (int i = 0; i < tamanho; i++) {
+    if (valor_algarismo(num_romano[i]) == -1) {
       return -1;  // Algarismo inválido
     }
-    soma += valor;
   }
   
-  return soma; 
+  for (int i = 0; i < tamanho; i++) {
+    int valor_atual = valor_algarismo(num_romano[i]);
+    
+    // Se não é o último algarismo e o atual é menor que o próximo, subtrai
+    if (i + 1 < tamanho) {
+      int valor_proximo = valor_algarismo(num_romano[i + 1]);
+      
+      if (valor_atual < valor_proximo) {
+        resultado -= valor_atual;
+      } else {
+        resultado += valor_atual;
+      }
+    } else {
+      // Último algarismo, sempre soma
+      resultado += valor_atual;
+    }
+  }
+  
+  return resultado; 
 } 
 
  

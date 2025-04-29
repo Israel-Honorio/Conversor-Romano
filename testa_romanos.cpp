@@ -27,5 +27,15 @@ TEST_CASE( "Numeros romanos - dois algarismos (adição)", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("VI") == 6 );
     REQUIRE( romanos_para_decimal("XI") == 11 );
     REQUIRE( romanos_para_decimal("XV") == 15 );
+    REQUIRE( romanos_para_decimal("XXXIII") == 33 );
     REQUIRE( romanos_para_decimal("MM") == 2000 );
+}
+
+TEST_CASE( "Numeros romanos - subtração", "[romanos]" ) {
+    REQUIRE( romanos_para_decimal("IV") == 4 );
+    REQUIRE( romanos_para_decimal("IX") == 9 );
+    REQUIRE( romanos_para_decimal("XL") == 40 );
+    REQUIRE( romanos_para_decimal("XC") == 90 );
+    REQUIRE( romanos_para_decimal("CD") == 400 );
+    REQUIRE( romanos_para_decimal("CM") == 900 );
 }
