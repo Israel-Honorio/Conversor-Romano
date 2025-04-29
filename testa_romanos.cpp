@@ -19,8 +19,13 @@ TEST_CASE( "Numeros romanos - algarismos unicos", "[romanos]" ) {
 
 TEST_CASE( "Numeros romanos - algarismos invalidos", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("G") == -1 );
-    
     REQUIRE( romanos_para_decimal("i") == -1 );
+}
 
-    
+TEST_CASE( "Numeros romanos - dois algarismos (adição)", "[romanos]" ) {
+    REQUIRE( romanos_para_decimal("II") == 2 );
+    REQUIRE( romanos_para_decimal("VI") == 6 );
+    REQUIRE( romanos_para_decimal("XI") == 11 );
+    REQUIRE( romanos_para_decimal("XV") == 15 );
+    REQUIRE( romanos_para_decimal("MM") == 2000 );
 }

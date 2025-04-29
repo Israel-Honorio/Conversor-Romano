@@ -1,37 +1,38 @@
 #include "romanos.hpp"
 #include <string.h>
 
+
+int valor_algarismo(char c) {
+  switch (c) {
+    case 'I': return 1;
+    case 'V': return 5;
+    case 'X': return 10;
+    case 'L': return 50;
+    case 'C': return 100;
+    case 'D': return 500;
+    case 'M': return 1000;
+    default: return -1;
+  }
+}
+
 int romanos_para_decimal(char const * num_romano)
 {
-  // Verifica se é um algarismo válido
-  for (int i = 0; num_romano[i] != '\0'; i++) {
-    if (num_romano[i] != 'I' && 
-        num_romano[i] != 'V' && 
-        num_romano[i] != 'X' && 
-        num_romano[i] != 'L' && 
-        num_romano[i] != 'C' && 
-        num_romano[i] != 'D' && 
-        num_romano[i] != 'M') {
-      return -1;
-    }
+  if (strlen(num_romano) == 0) {
+    return -1;  // String vazia
   }
 
-  if (strcmp(num_romano, "I") == 0) {
-    return 1;
-  } else if (strcmp(num_romano, "V") == 0) {
-    return 5;
-  } else if (strcmp(num_romano, "X") == 0) {
-    return 10;
-  } else if (strcmp(num_romano, "L") == 0) {
-    return 50;
-  } else if (strcmp(num_romano, "C") == 0) {
-    return 100;
-  } else if (strcmp(num_romano, "D") == 0) {
-    return 500;
-  } else if (strcmp(num_romano, "M") == 0) {
-    return 1000;
+  int soma = 0;
+  
+  // Verifica se todos os caracteres são algarismos romanos válidos
+  for (int i = 0; num_romano[i] != '\0'; i++) {
+    int valor = valor_algarismo(num_romano[i]);
+    if (valor == -1) {
+      return -1;  // Algarismo inválido
+    }
+    soma += valor;
   }
   
-  return 0; 
-}
+  return soma; 
+} 
+
  
