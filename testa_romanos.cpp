@@ -20,6 +20,23 @@ TEST_CASE( "Numeros romanos - algarismos unicos", "[romanos]" ) {
 TEST_CASE( "Numeros romanos - algarismos invalidos", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("G") == -1 );
     REQUIRE( romanos_para_decimal("i") == -1 );
+
+    // Quatro caracteres iguais seguidos
+    REQUIRE( romanos_para_decimal("IIII") == -1 );
+    REQUIRE( romanos_para_decimal("XXXX") == -1 );
+    
+    // V, L e D não podem ser repetidos
+    REQUIRE( romanos_para_decimal("VV") == -1 );
+    REQUIRE( romanos_para_decimal("LL") == -1 );
+    REQUIRE( romanos_para_decimal("DD") == -1 );
+    
+    // Ordem incorreta de subtração
+    REQUIRE( romanos_para_decimal("VX") == -1 );
+    REQUIRE( romanos_para_decimal("LC") == -1 );
+    REQUIRE( romanos_para_decimal("DM") == -1 );
+    
+    // Apenas I, X, C podem ser usados para subtração
+    REQUIRE( romanos_para_decimal("VL") == -1 );
 }
 
 TEST_CASE( "Numeros romanos - dois algarismos (adição)", "[romanos]" ) {
