@@ -1,2 +1,6 @@
 ﻿com o g++ e o make e demais programas instalados 
 digite "make" neste diretório 
+
+cppcheck --enable=warning --language=c++ --suppress=*:catch.hpp --suppress=unmatchedSuppression --suppress=missingInclude .
+
+python cpplint.py --extensions=cpp,hpp --filter=-build/include_subdir,-whitespace/comments,-runtime/references romanos.cpp romanos.hpp testa_romanos.cpp
