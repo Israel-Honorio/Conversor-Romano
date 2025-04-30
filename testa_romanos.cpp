@@ -1,5 +1,6 @@
 // Copyright 2025 Israel Honório
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
+#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main()
+//- only do this in one cpp file
 #include "./catch.hpp"
 #include "./romanos.hpp"
 
@@ -26,12 +27,12 @@ TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]") {
     REQUIRE(romanos_para_decimal("XXXX") == -1);
     REQUIRE(romanos_para_decimal("CCCC") == -1);
     REQUIRE(romanos_para_decimal("MMMM") == -1);
-    
+
     // V, L e D não podem ser repetidos
     REQUIRE(romanos_para_decimal("VV") == -1);
     REQUIRE(romanos_para_decimal("LL") == -1);
     REQUIRE(romanos_para_decimal("DD") == -1);
-    
+
     // Ordem incorreta de subtração
     REQUIRE(romanos_para_decimal("VX") == -1);
     REQUIRE(romanos_para_decimal("LC") == -1);
@@ -41,7 +42,7 @@ TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]") {
     REQUIRE(romanos_para_decimal("IM") == -1);
     REQUIRE(romanos_para_decimal("XD") == -1);
     REQUIRE(romanos_para_decimal("XM") == -1);
-    
+
     // Apenas I, X, C podem ser usados para subtração
     REQUIRE(romanos_para_decimal("VL") == -1);
     REQUIRE(romanos_para_decimal("LD") == -1);
@@ -79,13 +80,13 @@ TEST_CASE("Numeros romanos - números complexos", "[romanos]") {
 TEST_CASE("Numeros romanos - limites e casos especiais", "[romanos]") {
     // Limite máximo permitido
     REQUIRE(romanos_para_decimal("MMM") == 3000);
-    
+
     // Acima do limite máximo
     REQUIRE(romanos_para_decimal("MMMI") == -1);
-    
+
     // String vazia
     REQUIRE(romanos_para_decimal("") == -1);
-    
+
     // String muito longa (mais de 30 caracteres)
     REQUIRE(romanos_para_decimal("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM") == -1);
 }
@@ -98,7 +99,7 @@ TEST_CASE("Numeros romanos - padrões especiais de subtração", "[romanos]") {
     REQUIRE(romanos_para_decimal("XC") == 90);
     REQUIRE(romanos_para_decimal("CD") == 400);
     REQUIRE(romanos_para_decimal("CM") == 900);
-    
+
     // Padrões inválidos (não pode ter subtração após repetição)
     REQUIRE(romanos_para_decimal("IIV") == -1);
     REQUIRE(romanos_para_decimal("XXL") == -1);
