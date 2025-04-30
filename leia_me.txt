@@ -1,6 +1,34 @@
-﻿com o g++ e o make e demais programas instalados 
-digite "make" neste diretório 
+﻿Conversor de números romanos para números decimais
 
-cppcheck --enable=warning --language=c++ --suppress=*:catch.hpp --suppress=unmatchedSuppression --suppress=missingInclude .
+Autor: Israel Honório de Castro
+Matrícula: 231003498
 
-python cpplint.py --extensions=cpp,hpp --filter=-build/include_subdir,-whitespace/comments,-runtime/references romanos.cpp romanos.hpp testa_romanos.cpp
+Instruções para compilação e execução: 
+
+1. Para compilar o programa:
+   make
+
+2. Para executar os testes:
+   make test
+
+3. Para verificar a cobertura de código:
+   make gcov
+    --
+    gcov romanos.cpp
+    File 'romanos.cpp'
+    Lines executed:100.00% of 58
+    Creating 'romanos.cpp.gcov'
+    --
+
+4. Para executar análise estática:
+    cppcheck --enable=warning --language=c++ --suppress=*:catch.hpp --suppress=unmatchedSuppression --suppress=missingInclude .
+
+    esse comando no terminal deixa a analise otimizada
+
+5. Para verificar o estilo:
+    python cpplint.py --extensions=cpp,hpp --filter=-build/include_subdir,-whitespace/comments,-runtime/references romanos.cpp romanos.hpp testa_romanos.cpp
+
+Sobre o projeto:
+Este projeto implementa um conversor de números romanos para números decimais.
+A implementação suporta números romanos de 1 até 3000 e segue as regras padrão de formação de números romanos.
+

@@ -1,0 +1,109 @@
+        -:    0:Source:romanos.cpp
+        -:    0:Graph:romanos.gcno
+        -:    0:Data:romanos.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:// Copyright 2025 Israel Honório
+        -:    2:// Conversor de números romanos
+        -:    3:
+        -:    4:#include "romanos.hpp"
+        -:    5:#include <cstring>
+        -:    6:
+      492:    7:int valor_algarismo(char c) {
+      492:    8:    switch (c) {
+       93:    9:        case 'I': return 1;
+       45:   10:        case 'V': return 5;
+       97:   11:        case 'X': return 10;
+       35:   12:        case 'L': return 50;
+       79:   13:        case 'C': return 100;
+       31:   14:        case 'D': return 500;
+      106:   15:        case 'M': return 1000;
+        6:   16:        default: return -1;
+        -:   17:    }
+        -:   18:}
+        -:   19:
+       46:   20:bool pode_subtrair(char c) {
+       46:   21:    return (c == 'I' || c == 'X' || c == 'C');
+        -:   22:}
+        -:   23:
+       71:   24:int romanos_para_decimal(const char* num_romano) {
+       71:   25:    int tamanho = strlen(num_romano);
+       71:   26:    if (tamanho == 0 || tamanho > 30) return -1;
+        -:   27:
+        -:   28:    // Verifica caracteres inválidos
+      269:   29:    for (int i = 0; i < tamanho; i++) {
+      206:   30:        if (valor_algarismo(num_romano[i]) == -1) return -1;
+        -:   31:    }
+        -:   32:
+        -:   33:    // Verifica repetições de V, L, D e consecutivos de I, X, C, M
+       63:   34:    int contador_V = 0, contador_L = 0, contador_D = 0;
+      241:   35:    for (int i = 0; i < tamanho; i++) {
+      185:   36:        switch (num_romano[i]) {
+        -:   37:            case 'V':
+       18:   38:                if (++contador_V > 1) {
+        1:   39:                    return -1;
+        -:   40:                }
+       17:   41:                break;
+        -:   42:            case 'L':
+       15:   43:                if (++contador_L > 1) {
+        1:   44:                    return -1;
+        -:   45:                }
+       14:   46:                break;
+        -:   47:            case 'D':
+       14:   48:                if (++contador_D > 1) {
+        1:   49:                    return -1;
+        -:   50:                }
+       13:   51:                break;
+        -:   52:            default:
+      138:   53:                break;
+        -:   54:        }
+        -:   55:
+        -:   56:        // Verifica repetições consecutivas de I, X, C, M (max 3)
+      182:   57:        if (i > 0 && num_romano[i] == num_romano[i-1]) {
+       27:   58:            char c = num_romano[i];
+       27:   59:            if (c == 'I' || c == 'X' || c == 'C' || c == 'M') {
+       27:   60:                int contador = 1;
+      111:   61:                while (i < tamanho && num_romano[i] == c) {
+       42:   62:                    contador++;
+       42:   63:                    i++;
+        -:   64:                }
+       27:   65:                if (contador > 3) return -1;
+       23:   66:                i--;
+        -:   67:            }
+        -:   68:        }
+        -:   69:    }
+        -:   70:
+       56:   71:    int resultado = 0;
+      206:   72:    for (int i = 0; i < tamanho; i++) {
+      164:   73:        int valor_atual = valor_algarismo(num_romano[i]);
+        -:   74:
+      164:   75:        if (i + 1 < tamanho) {
+      122:   76:            int valor_proximo = valor_algarismo(num_romano[i+1]);
+      122:   77:            if (valor_atual < valor_proximo) {
+        -:   78:                // Verifica se a subtração é válida
+       55:   79:                if (!pode_subtrair(num_romano[i]) ||
+       23:   80:                    (i > 0 && num_romano[i] == num_romano[i-1])) {
+        9:   81:                    return -1;
+        -:   82:                }
+        -:   83:
+        -:   84:                // Valida pares de subtração
+       37:   85:                if ((valor_atual == 1 && (valor_proximo != 5 &&
+       34:   86:                     valor_proximo != 10)) ||
+       13:   87:                    (valor_atual == 10 && (valor_proximo != 50 &&
+       32:   88:                     valor_proximo != 100)) ||
+       11:   89:                    (valor_atual == 100 && (valor_proximo != 500 &&
+        -:   90:                     valor_proximo != 1000))) {
+        5:   91:                    return -1;
+        -:   92:                }
+        -:   93:
+       32:   94:                resultado -= valor_atual;
+        -:   95:            } else {
+       76:   96:                resultado += valor_atual;
+        -:   97:            }
+        -:   98:        } else {
+       42:   99:            resultado += valor_atual;
+        -:  100:        }
+        -:  101:    }
+        -:  102:
+       42:  103:    return (resultado > 3000) ? -1 : resultado;
+        -:  104:}
