@@ -56,3 +56,10 @@ TEST_CASE( "Numeros romanos - subtração", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("CD") == 400 );
     REQUIRE( romanos_para_decimal("CM") == 900 );
 }
+
+TEST_CASE( "Numeros romanos - números complexos", "[romanos]" ) {
+    REQUIRE( romanos_para_decimal("MCMXCIV") == 1994 );
+    REQUIRE( romanos_para_decimal("MMXXI") == 2021 );
+    REQUIRE( romanos_para_decimal("MCMLXXXIV") == 1984 );
+    REQUIRE( romanos_para_decimal("MMCMXCIX") == 2999 );
+}
