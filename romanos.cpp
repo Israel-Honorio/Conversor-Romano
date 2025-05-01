@@ -24,9 +24,9 @@ bool pode_subtrair(char c) {
 int romanos_para_decimal(const char* num_romano) {
     if (strcmp(num_romano, "I") == 0) {
         return 1;
-      } /*else if (strcmp(num_romano, "V") == 0) {
+      } else if (strcmp(num_romano, "V") == 0) {
         return 5;
-      }*/
+      }
       return 0;
     /*int tamanho = strlen(num_romano);
     if (tamanho == 0 || tamanho > 30) return -1;
