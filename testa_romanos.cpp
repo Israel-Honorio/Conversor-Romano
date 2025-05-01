@@ -13,11 +13,12 @@ TEST_CASE("Numeros romanos - algarismos unicos", "[romanos]") {
     REQUIRE(romanos_para_decimal("D") == 500);
     REQUIRE(romanos_para_decimal("M") == 1000);
 }
-/*
+
 TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]") {
     REQUIRE(romanos_para_decimal("G") == -1);
     REQUIRE(romanos_para_decimal("i") == -1);
-    REQUIRE(romanos_para_decimal("Z") == -1);
+}
+/*    REQUIRE(romanos_para_decimal("Z") == -1);
     REQUIRE(romanos_para_decimal("Y") == -1);
     REQUIRE(romanos_para_decimal("P") == -1);
     REQUIRE(romanos_para_decimal("K") == -1);
