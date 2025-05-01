@@ -16,46 +16,13 @@ int valor_algarismo(char c) {
         default: return -1;
     }
 }
-/*
+
 bool pode_subtrair(char c) {
     return (c == 'I' || c == 'X' || c == 'C');
 }
-*/
+
 int romanos_para_decimal(const char* num_romano) {
-    if (strlen(num_romano) == 0) {
-        return -1;  // String vazia
-      }
-    
-      int resultado = 0;
-      int tamanho = strlen(num_romano);
-      
-      // Verifica se todos os caracteres são algarismos romanos válidos
-      for (int i = 0; i < tamanho; i++) {
-        if (valor_algarismo(num_romano[i]) == -1) {
-          return -1;  // Algarismo inválido
-        }
-      }
-      
-      for (int i = 0; i < tamanho; i++) {
-        int valor_atual = valor_algarismo(num_romano[i]);
-        
-        // Se não é o último algarismo e o atual é menor que o próximo, subtrai
-        if (i + 1 < tamanho) {
-          int valor_proximo = valor_algarismo(num_romano[i + 1]);
-          
-          if (valor_atual < valor_proximo) {
-            resultado -= valor_atual;
-          } else {
-            resultado += valor_atual;
-          }
-        } else {
-          // Último algarismo, sempre soma
-          resultado += valor_atual;
-        }
-      }
-      
-      return resultado;  
-    /*int tamanho = strlen(num_romano);
+    int tamanho = strlen(num_romano);
     if (tamanho == 0 || tamanho > 30) return -1;
 
     // Verifica caracteres inválidos
@@ -133,5 +100,5 @@ int romanos_para_decimal(const char* num_romano) {
         }
     }
 
-    return (resultado > 3000) ? -1 : resultado;*/
+    return (resultado > 3000) ? -1 : resultado;
 }
