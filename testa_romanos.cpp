@@ -17,8 +17,7 @@ TEST_CASE("Numeros romanos - algarismos unicos", "[romanos]") {
 TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]") {
     REQUIRE(romanos_para_decimal("G") == -1);
     REQUIRE(romanos_para_decimal("i") == -1);
-}
-/*    REQUIRE(romanos_para_decimal("Z") == -1);
+    REQUIRE(romanos_para_decimal("Z") == -1);
     REQUIRE(romanos_para_decimal("Y") == -1);
     REQUIRE(romanos_para_decimal("P") == -1);
     REQUIRE(romanos_para_decimal("K") == -1);
@@ -48,7 +47,7 @@ TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]") {
     REQUIRE(romanos_para_decimal("VL") == -1);
     REQUIRE(romanos_para_decimal("LD") == -1);
     REQUIRE(romanos_para_decimal("DM") == -1);
-}*/
+}
 
 TEST_CASE("Numeros romanos - dois algarismos (adição)", "[romanos]") {
     REQUIRE(romanos_para_decimal("II") == 2);
