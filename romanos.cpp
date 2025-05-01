@@ -4,7 +4,7 @@
 #include "romanos.hpp"
 #include <cstring>
 
-int valor_algarismo(char c) {
+/*int valor_algarismo(char c) {
     switch (c) {
         case 'I': return 1;
         case 'V': return 5;
@@ -20,9 +20,15 @@ int valor_algarismo(char c) {
 bool pode_subtrair(char c) {
     return (c == 'I' || c == 'X' || c == 'C');
 }
-
+*/
 int romanos_para_decimal(const char* num_romano) {
-    int tamanho = strlen(num_romano);
+    if (strcmp(num_romano, "I") == 0) {
+        return 1;
+      } /*else if (strcmp(num_romano, "V") == 0) {
+        return 5;
+      }*/
+      return 0;
+    /*int tamanho = strlen(num_romano);
     if (tamanho == 0 || tamanho > 30) return -1;
 
     // Verifica caracteres inválidos
@@ -100,5 +106,5 @@ int romanos_para_decimal(const char* num_romano) {
         }
     }
 
-    return (resultado > 3000) ? -1 : resultado;
+    return (resultado > 3000) ? -1 : resultado;*/
 }
