@@ -28,6 +28,9 @@ Instruções para compilação e execução:
 5. Para verificar o estilo:
     python cpplint.py --extensions=cpp,hpp --filter=-build/include_subdir,-whitespace/comments,-runtime/references romanos.cpp romanos.hpp testa_romanos.cpp
 
+6. Para usar o verificador dinamico:
+    make valgrind
+
 Sobre o projeto:
 Este projeto implementa um conversor de números romanos para números decimais.
 A implementação suporta números romanos de 1 até 3000 e segue as regras padrão de formação de números romanos.
