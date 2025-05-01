@@ -68,7 +68,7 @@ TEST_CASE("Numeros romanos - subtração", "[romanos]") {
     REQUIRE(romanos_para_decimal("CD") == 400);
     REQUIRE(romanos_para_decimal("CM") == 900);
 }
-/*
+
 TEST_CASE("Numeros romanos - números complexos", "[romanos]") {
     REQUIRE(romanos_para_decimal("MCMXCIV") == 1994);
     REQUIRE(romanos_para_decimal("MMXXI") == 2021);
@@ -115,6 +115,5 @@ TEST_CASE("Numeros romanos - exemplos reais", "[romanos]") {
     REQUIRE(romanos_para_decimal("MMXXIII") == 2023);    // 2023
     REQUIRE(romanos_para_decimal("MCMXCVIII") == 1998);  // 1998
     REQUIRE(romanos_para_decimal("MMXIV") == 2014);      // 2014
-}*/
-
+}
 // Copyright 2025 Israel Honório
