@@ -48,7 +48,7 @@ TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]") {
     REQUIRE(romanos_para_decimal("VL") == -1);
     REQUIRE(romanos_para_decimal("LD") == -1);
     REQUIRE(romanos_para_decimal("DM") == -1);
-}
+}*/
 
 TEST_CASE("Numeros romanos - dois algarismos (adição)", "[romanos]") {
     REQUIRE(romanos_para_decimal("II") == 2);
@@ -60,7 +60,7 @@ TEST_CASE("Numeros romanos - dois algarismos (adição)", "[romanos]") {
     REQUIRE(romanos_para_decimal("MD") == 1500);
     REQUIRE(romanos_para_decimal("MM") == 2000);
 }
-
+/*
 TEST_CASE("Numeros romanos - subtração", "[romanos]") {
     REQUIRE(romanos_para_decimal("IV") == 4);
     REQUIRE(romanos_para_decimal("IX") == 9);
